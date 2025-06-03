@@ -91,13 +91,25 @@ node_modules
 .DS_Store
  -->
 
-#3 Stage and commit your code
+#3 Create a new repository on GitHub (DO NOT initialize with a README (since you already have files locally))
 -> git add .
--> git commit -m "Initial commit"
-
-#4 Create a new repository on GitHub (DO NOT initialize with a README (since you already have files locally))
-
-#5 Connect your local repo to GitHub
 -> git remote add origin https://github.com/doanviethung1009/portal_project.git
--> git branch -M dev
--> git push -u origin dev
+-> git branch -M main
+-> git push -u origin main
+
+#4 create branch dev
+-> git checkout -m dev 
+ 
+
+-- install nodemon auto start nodejs
+-> npm install --save-dev nodemon
+-> config in package.json to call service
+example:
+<!-- "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
+  }, -->
+
+-- create routing for api to use middleware or modular
+-> https://expressjs.com/en/guide/routing.html (express.Router)
