@@ -113,3 +113,11 @@ example:
 
 -- create routing for api to use middleware or modular
 -> https://expressjs.com/en/guide/routing.html (express.Router)
+
+-- lib to convert data to xml for call type api
+-> npm i js2xmlparser
+
+-- using res.format to define type for api 
+
+-- config template for view engine using EJS or PUG 
+-> npm i ejs
