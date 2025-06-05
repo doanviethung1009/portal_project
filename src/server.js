@@ -20,11 +20,11 @@ app.use(express.json());
 // app.get('/', (req, res) => {
 //     res.send('hello world')
 // })
-
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 //modular route to call api
 apiV1(app)
-// exampleAPI(app)
+exampleAPI(app)
 //call function active view EJS
 viewEngine(app)
 
