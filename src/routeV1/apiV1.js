@@ -8,14 +8,22 @@ const routerAPI = express.Router();
 
 
 const apiV1 = (app) => {
-    routerAPI.get("/:id?", (req, res) => {
-        // res.json({
-        //     name: "hung",
-        //     function: "test"
-        // })
-        console.log("check")
-        res.send('Hello World!')
-    });
+    routerAPI.get("/", (req, res) => {
+        res.json({
+            name: "hung",
+            function: "test"
+        })
+        // res.send('Hello World!')
+        // console.log(">>> check action")
+    })
+    // routerAPI.get("/:_id", (req, res) => {
+    //     // res.json({
+    //     //     name: "hung",
+    //     //     function: "test"
+    //     // })
+    //     console.log("check")
+    //     res.send('Hello World!')
+    // });
 
     routerAPI.get("/check", checkAcceptHeader, fetchUserController)
 
