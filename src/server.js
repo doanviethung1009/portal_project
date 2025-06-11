@@ -8,8 +8,10 @@ import apiV1 from './routeV1/apiV1.js';
 import exampleAPI from './routeV1/exampleAPI.js';
 import { viewEngine } from './config/viewEngine.js';
 import bodyParser from 'body-parser';
-import sequelize from './config/dbsqlLite.js';
-import User from './models/user.js';
+// import sequelize from './config/dbsqlLite.js';
+// import User from './models/user.js';
+import connectPostgres from './config/dbPostgresSQLConfig.js';
+import openConnection from './connections/openConnection.js';
 // import { client, pool } from './config/dbPostGresSQLConfig.js';
 
 
@@ -31,7 +33,10 @@ exampleAPI(app)
 //call function active view EJS
 viewEngine(app)
 
-// // const resDb = await client.connect()
+
+
+
+
 // const poolDb = await pool.connect()
 
 // console.log(await pool.query('SELECT NOW()'))
@@ -42,28 +47,31 @@ viewEngine(app)
 // // console.log("> check database ", result)
 
 
-const run = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Connected to the SQLite database.');
 
-        await sequelize.sync({ force: true }); // create tables
-        console.log('Tables created.');
+//for sqllite
 
-        const user = await User.create({
-            name: 'John Doe',
-            email: 'john@example.com'
-        });
+// const run = async () => {
+//     try {
+//         await sequelize.authenticate();
+//         console.log('Connected to the SQLite database.');
 
-        console.log('User saved:', user.toJSON());
-    } catch (err) {
-        console.error('Error:', err);
-    } finally {
-        await sequelize.close();
-    }
-};
+//         await sequelize.sync({ force: true }); // create tables
+//         console.log('Tables created.');
 
-run();
+//         const user = await User.create({
+//             name: 'John Doe',
+//             email: 'john@example.com'
+//         });
+
+//         console.log('User saved:', user.toJSON());
+//     } catch (err) {
+//         console.error('Error:', err);
+//     } finally {
+//         await sequelize.close();
+//     }
+// };
+
+// run();
 
 
 const hostname = process.env.BE_HOSTNAME || "0.0.0.0"
@@ -71,6 +79,7 @@ const port = process.env.BE_PORT || 3000;
 
 // start apps
 app.listen(port, () => {
+    openConnection()
     console.log(`App is listening on host: ${hostname}, port ${port}`)
 })
 

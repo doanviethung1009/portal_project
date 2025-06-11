@@ -1,8 +1,8 @@
 // models/User.js
 import { DataTypes } from 'sequelize';
-import sequelize from '../db.js';
+import connectPostgres from '../config/dbPostgresSQLConfig.js';
 
-const User = sequelize.define('User', {
+const User = connectPostgres.define('User', {
     username: {
         type: DataTypes.STRING,
         allowNull: false

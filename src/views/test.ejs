@@ -8,8 +8,29 @@
 <body>
 
     <h2>Ordered List with Letters</h2>
+    <table>
 
 
+        <tr>
+            <th>
+                username
+            </th>
+            <th>
+                email
+            </th>
+        </tr>
+        <% for( let i=0 ; i < data.length; i++) { %>
+
+            <tr>
+                <td>
+                    <%= data[i].username %>
+                </td>
+                <td>
+                    <%= data[i].email %>
+                </td>
+            </tr>
+            <% } %>
+    </table>
 </body>
 
 </html>
