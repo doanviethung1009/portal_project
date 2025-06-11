@@ -18,7 +18,7 @@ const apiV1 = (app) => {
 
     routerAPI.get("/check", checkAcceptHeader, fetchUserController)
 
-    routerAPI.get("/test/:id", checkRoleAdmin, fetchUserController)
+    routerAPI.get("/test/", checkRoleAdmin, fetchUserController)
 
     return app.use("/v1/api", routerAPI)
 }

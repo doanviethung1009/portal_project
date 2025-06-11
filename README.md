@@ -121,3 +121,13 @@ example:
 
 -- config template for view engine using EJS or PUG 
 -> npm i ejs
+
+-- config connect database postgres:
+-> npm install pg (local driver for postgres)
+
+-- using odm/orm lib sequelize to connect many database:
+-> npm install sequelize 
+
+- using sqlite to create database local;
+-> npm install  sqlite3
+

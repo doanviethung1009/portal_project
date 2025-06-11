@@ -11,6 +11,7 @@ const fetchUserController = (req, res) => {
         },
         json: (req, res) => {
             return res.status(200).json(users)
+
         },
         default: (req, res) => {
             res.status(406).send('Not Acceptable: Supported formats are html, text, and json');

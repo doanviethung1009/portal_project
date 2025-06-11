@@ -8,6 +8,7 @@ import apiV1 from './routeV1/apiV1.js';
 import exampleAPI from './routeV1/exampleAPI.js';
 import { viewEngine } from './config/viewEngine.js';
 import bodyParser from 'body-parser';
+// import { client, pool } from './config/dbPostGresSQLConfig.js';
 
 
 
@@ -28,6 +29,15 @@ exampleAPI(app)
 //call function active view EJS
 viewEngine(app)
 
+// // const resDb = await client.connect()
+// const poolDb = await pool.connect()
+
+// console.log(await pool.query('SELECT NOW()'))
+// // const result = await client.query('SELECT NOW()')
+// poolDb.on('error', (err) => {
+//     console.error('something bad has happened!', err.stack)
+// })
+// // console.log("> check database ", result)
 
 
 const hostname = process.env.BE_HOSTNAME || "0.0.0.0"
