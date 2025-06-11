@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/doanviethung1009/portal_project#readme",
   "dependencies": {
+    "better-sqlite3": "^11.10.0",
     "body-parser": "^2.2.0",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
