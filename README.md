@@ -129,5 +129,13 @@ example:
 -> npm install sequelize 
 
 - using sqlite to create database local;
--> npm install  sqlite3
+-> npm install  sqlite3 
 
+- test create datafile in local
+-> npm install sqlite3@5.1.6 --legacy-peer-deps
+-> 
+const sequelize = new Sequelize({
+    // dialect: 'sqlite',
+    dialect: 'better-sqlite3',
+    storage: './database.sqlite' // <- your local file here
+});

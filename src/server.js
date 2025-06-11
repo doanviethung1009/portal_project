@@ -8,6 +8,8 @@ import apiV1 from './routeV1/apiV1.js';
 import exampleAPI from './routeV1/exampleAPI.js';
 import { viewEngine } from './config/viewEngine.js';
 import bodyParser from 'body-parser';
+import sequelize from './config/dbsqlLite.js';
+import User from './models/user.js';
 // import { client, pool } from './config/dbPostGresSQLConfig.js';
 
 
@@ -38,6 +40,30 @@ viewEngine(app)
 //     console.error('something bad has happened!', err.stack)
 // })
 // // console.log("> check database ", result)
+
+
+const run = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connected to the SQLite database.');
+
+        await sequelize.sync({ force: true }); // create tables
+        console.log('Tables created.');
+
+        const user = await User.create({
+            name: 'John Doe',
+            email: 'john@example.com'
+        });
+
+        console.log('User saved:', user.toJSON());
+    } catch (err) {
+        console.error('Error:', err);
+    } finally {
+        await sequelize.close();
+    }
+};
+
+run();
 
 
 const hostname = process.env.BE_HOSTNAME || "0.0.0.0"
