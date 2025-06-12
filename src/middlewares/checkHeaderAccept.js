@@ -13,14 +13,16 @@ const checkAcceptHeader = (req, res, next) => {
 }
 
 const checkRoleAdmin = (req, res, next) => {
-    console.log(">>> check query params: ", req.query)
+    console.log(">>> check query params: ", req.query.id)
     const role = req.query.role
-    if (role != "admin") {
+    if (!role) {
+        // return res.send("you need to login")
+        next()
+    }
+    else if (role != "admin") {
         return res.send(`you aren't authorize ${role}`)
     }
-    else if (!role) {
-        return res.send("you need to login")
-    }
+
     next()
 }
 

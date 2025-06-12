@@ -1,6 +1,7 @@
 import express from 'express'
-import { createUserController, fetchUserController } from "../controllers/userController.js";
+import { createUserController, deleteUserController, fetchUserController } from "../controllers/userController.js";
 import { checkAcceptHeader, checkRoleAdmin } from "../middlewares/checkHeaderAccept.js";
+import checkItemExist from '../middlewares/checkItemExist.js';
 
 
 
@@ -22,6 +23,8 @@ const apiV1 = (app) => {
     routerAPI.get("/user", fetchUserController)
 
     routerAPI.post("/user", checkRoleAdmin, createUserController)
+
+    routerAPI.delete("/user", deleteUserController)
 
     return app.use("/v1/api", routerAPI)
 }

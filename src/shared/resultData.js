@@ -1,7 +1,7 @@
 
 
 const resultData = (data) => {
-    console.log(">>> check data", data)
+    // console.log(">>> check data", data)
     return ({
         errCode: 0,
         errMessage: "Fetch data successful",
